@@ -79,9 +79,12 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
       {/* Card header — placeholder until image is added */}
       <div className="relative h-40 bg-night border-b border-white/[0.06] flex items-center justify-center overflow-hidden">
         {project.image ? (
-          // When you add an image, replace with:
-          // <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover opacity-60" />
-          null
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={project.image}
+            alt={project.title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
         ) : (
           <>
             {/* Subtle aurora glow behind initials */}

@@ -60,11 +60,16 @@ export default function TravelPage() {
                 className="border border-white/[0.08] rounded-xl overflow-hidden bg-night-card/70 backdrop-blur-sm hover:border-aurora-green/25 transition-colors"
               >
                 <div className="h-44 bg-night/60 relative flex items-end p-4 border-b border-white/[0.06]">
-                  {/*
-                    To add a photo, replace this div's contents with:
-                    <img src={trip.image} alt={trip.location}
-                      className="absolute inset-0 w-full h-full object-cover opacity-60" />
-                  */}
+                  {trip.image && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={trip.image}
+                      alt={trip.location}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  )}
+                  {/* gradient keeps the label readable over a photo */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-night/90 to-transparent" />
                   <div className="relative z-10">
                     <p className="text-white font-bold text-base">{trip.location}</p>
                     <p className="text-slate-500 text-sm">{trip.date}</p>
