@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Xiaohang Li — Data Scientist & Software Engineer",
+  title: "Mark Li — Data Scientist & AI Engineer",
   description:
-    "Portfolio of Xiaohang Li (Mark), a Data Scientist & Software Engineer building at the intersection of AI, data, and software.",
+    "Portfolio of Mark (Xiaohang) Li, a Data Scientist & AI Engineer building at the intersection of AI, data, and software.",
 };
 
 export default function RootLayout({

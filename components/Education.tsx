@@ -16,13 +16,7 @@ const education = [
   },
 ];
 
-function FadeIn({
-  children,
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  delay?: number;
-}) {
+function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   return (
@@ -39,28 +33,22 @@ function FadeIn({
 
 export default function Education() {
   return (
-    <section id="education" className="py-24 bg-surface px-6">
+    <section id="education" className="py-24 bg-surface-2 px-6">
       <div className="max-w-3xl mx-auto">
         <FadeIn>
           <h2 className="text-3xl font-bold text-slate-900 mb-2">Education</h2>
-          <div className="w-12 h-1 bg-accent rounded mb-10" />
+          <div className="w-12 h-1 rounded gradient-aurora mb-10" />
         </FadeIn>
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-5">
           {education.map((edu, i) => (
             <FadeIn key={edu.school} delay={i * 0.1}>
-              <div className="border border-slate-200 rounded-xl p-6 bg-white flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <div className="border border-slate-200 rounded-2xl p-6 bg-white flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 hover:border-slate-300 hover:shadow-md transition-all">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-lg">
-                    {edu.school}
-                  </h3>
-                  <p className="text-accent font-semibold text-sm mt-0.5">
-                    {edu.degree}
-                  </p>
+                  <h3 className="font-bold text-slate-900 text-lg">{edu.school}</h3>
+                  <p className="aurora-text font-semibold text-sm mt-0.5">{edu.degree}</p>
                 </div>
-                <span className="text-slate-500 text-sm font-medium whitespace-nowrap">
-                  {edu.period}
-                </span>
+                <span className="text-slate-500 text-sm font-medium whitespace-nowrap">{edu.period}</span>
               </div>
             </FadeIn>
           ))}

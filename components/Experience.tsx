@@ -28,8 +28,7 @@ const jobs: Job[] = [
     type: "Internship",
     period: "Jun 2025 – Aug 2025",
     location: "Bloomington, MN",
-    description:
-      "Supported catastrophe risk modeling and data workflows.",
+    description: "Supported catastrophe risk modeling and data workflows.",
   },
   {
     title: "SaT Data Analyst",
@@ -85,11 +84,10 @@ function TimelineItem({ job, delay, isLast }: { job: Job; delay: number; isLast:
       transition={{ duration: 0.55, delay, ease: "easeOut" }}
       className="relative pl-8"
     >
-      {/* Timeline dot */}
-      <div className="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-accent border-2 border-white ring-2 ring-accent" />
-      {/* Vertical line */}
+      {/* Aurora gradient dot */}
+      <div className="absolute left-0 top-1.5 w-3 h-3 rounded-full gradient-aurora ring-2 ring-white shadow-sm" />
       {!isLast && (
-        <div className="absolute left-[5px] top-4 bottom-0 w-[2px] bg-blue-100" />
+        <div className="absolute left-[5px] top-4 bottom-0 w-[2px] bg-gradient-to-b from-cyan-200 to-violet-200" />
       )}
 
       <div className="pb-10">
@@ -123,7 +121,7 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-2">Experience</h2>
-          <div className="w-12 h-1 bg-accent rounded mb-10" />
+          <div className="w-12 h-1 rounded gradient-aurora mb-10" />
         </motion.div>
 
         <div>

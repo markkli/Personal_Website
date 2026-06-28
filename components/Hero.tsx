@@ -12,50 +12,63 @@ function fadeUp(delay: number) {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center bg-white px-6 text-center">
+    <section className="relative min-h-screen flex flex-col items-center justify-center aurora-bg px-6 text-center overflow-hidden">
+      {/* Decorative aurora blobs */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-cyan-400/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-violet-400/10 blur-3xl pointer-events-none" />
+
+      {/* Profile picture */}
+      <motion.div {...fadeUp(0)} className="mb-6">
+        {/* Replace with: <Image src="/profile.jpg" alt="Mark Li" width={96} height={96} className="rounded-full object-cover ring-4 ring-white shadow-lg" /> */}
+        {/* Profile image placeholder — drop /public/profile.jpg to replace */}
+        <div className="w-24 h-24 rounded-full gradient-aurora flex items-center justify-center text-white text-3xl font-bold shadow-lg ring-4 ring-white select-none">
+          M
+        </div>
+      </motion.div>
+
       <motion.p
-        {...fadeUp(0)}
-        className="text-accent font-semibold text-sm tracking-widest uppercase mb-4"
+        {...fadeUp(0.05)}
+        className="text-slate-500 font-medium text-base mb-2"
       >
-        Portfolio
+        hey, I&apos;m
       </motion.p>
 
       <motion.h1
-        {...fadeUp(0.1)}
-        className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-slate-900 leading-tight tracking-tight"
+        {...fadeUp(0.12)}
+        className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight aurora-text"
       >
-        Xiaohang Li
+        Mark Li
       </motion.h1>
 
       <motion.p
-        {...fadeUp(0.2)}
-        className="mt-4 text-xl sm:text-2xl font-semibold text-accent"
+        {...fadeUp(0.22)}
+        className="mt-3 text-lg sm:text-xl font-semibold text-slate-700"
       >
-        Data Scientist &amp; Software Engineer
+        Data Scientist &amp; AI Engineer
       </motion.p>
 
       <motion.p
-        {...fadeUp(0.3)}
-        className="mt-4 text-base sm:text-lg text-slate-500 max-w-xl"
+        {...fadeUp(0.32)}
+        className="mt-3 text-base sm:text-lg text-slate-500 max-w-lg"
       >
         Building at the intersection of AI, data, and software.
       </motion.p>
 
       <motion.div
         {...fadeUp(0.45)}
-        className="mt-10 flex flex-wrap gap-4 justify-center"
+        className="mt-8 flex flex-wrap gap-4 justify-center"
       >
         <a
           href="#projects"
-          className="inline-flex items-center gap-2 bg-accent text-white font-semibold px-7 py-3 rounded-lg text-sm hover:bg-accent-hover transition-colors shadow-md shadow-blue-200"
+          className="inline-flex items-center gap-2 gradient-aurora text-white font-semibold px-7 py-3 rounded-full text-sm hover:opacity-90 transition-opacity shadow-lg shadow-cyan-200/50"
         >
           View Projects
         </a>
         <a
           href="#contact"
-          className="inline-flex items-center gap-2 border-2 border-accent text-accent font-semibold px-7 py-3 rounded-lg text-sm hover:bg-accent hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 border-2 border-slate-200 text-slate-700 font-semibold px-7 py-3 rounded-full text-sm hover:border-accent hover:text-accent transition-colors"
         >
-          Contact
+          Get in touch
         </a>
       </motion.div>
 

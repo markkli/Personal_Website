@@ -19,7 +19,7 @@ export default function Home() {
       <Education />
       <Contact />
       <footer className="py-8 text-center text-sm text-slate-400 bg-slate-50 border-t border-slate-100">
-        © {new Date().getFullYear()} Xiaohang Li. Built with Next.js &amp; Tailwind CSS.
+        © {new Date().getFullYear()} Mark Li — built with Next.js &amp; Tailwind
       </footer>
     </main>
   );

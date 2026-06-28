@@ -3,33 +3,56 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const skills = [
+const skillGroups = [
   {
     category: "Languages",
-    items: ["Python", "TypeScript", "JavaScript", "SQL"],
+    color: "cyan",
+    items: ["Python", "R", "SQL", "TypeScript", "JavaScript", "HTML/CSS"],
   },
   {
-    category: "Frameworks & Libraries",
-    items: ["React", "Next.js", "FastAPI", "Vite", "PyTorch", "Tailwind CSS"],
-  },
-  {
-    category: "ML & Data",
+    category: "ML & AI",
+    color: "violet",
     items: [
+      "PyTorch",
+      "scikit-learn",
       "XGBoost",
       "LightGBM",
-      "ResNet",
-      "LSTM",
-      "Azure Databricks",
-      "Snowflake",
+      "RAG",
       "ChromaDB",
-      "Pandas",
+      "A/B Testing",
+      "NLP",
+      "Computer Vision",
     ],
   },
   {
-    category: "Tools",
+    category: "Data & Cloud",
+    color: "teal",
+    items: [
+      "Pandas",
+      "PySpark",
+      "Azure Databricks",
+      "Snowflake",
+      "Power BI",
+      "Tableau",
+    ],
+  },
+  {
+    category: "Frameworks & Web",
+    color: "cyan",
+    items: ["React", "Next.js", "FastAPI", "Vite", "Tailwind CSS"],
+  },
+  {
+    category: "Tools & DevOps",
+    color: "violet",
     items: ["Docker", "Git", "OpenAI API", "Vercel"],
   },
 ];
+
+const tagStyles: Record<string, string> = {
+  cyan: "bg-cyan-50 text-cyan-700 border-cyan-100",
+  violet: "bg-violet-50 text-violet-700 border-violet-100",
+  teal: "bg-teal-50 text-teal-700 border-teal-100",
+};
 
 function FadeIn({
   children,
@@ -58,21 +81,21 @@ export default function Skills() {
       <div className="max-w-4xl mx-auto">
         <FadeIn>
           <h2 className="text-3xl font-bold text-slate-900 mb-2">Skills</h2>
-          <div className="w-12 h-1 bg-accent rounded mb-10" />
+          <div className="w-12 h-1 rounded gradient-aurora mb-10" />
         </FadeIn>
 
         <div className="grid sm:grid-cols-2 gap-8">
-          {skills.map((group, i) => (
+          {skillGroups.map((group, i) => (
             <FadeIn key={group.category} delay={i * 0.08}>
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-widest text-accent mb-3">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">
                   {group.category}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {group.items.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1.5 bg-blue-50 text-accent text-sm font-medium rounded-md border border-blue-100"
+                      className={`px-3 py-1.5 text-sm font-medium rounded-full border ${tagStyles[group.color]}`}
                     >
                       {skill}
                     </span>
