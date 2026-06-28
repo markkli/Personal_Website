@@ -60,13 +60,13 @@ export default function Hero() {
       >
         <a
           href="#projects"
-          className="inline-flex items-center gap-2 gradient-aurora text-white font-semibold px-7 py-3 rounded-full text-sm hover:opacity-90 transition-opacity shadow-lg shadow-cyan-200/50"
+          className="inline-flex items-center gap-2 gradient-aurora text-white font-semibold px-7 py-3 rounded-full text-sm hover:opacity-90 transition-opacity shadow-lg shadow-cyan-200/50 cursor-pointer"
         >
           View Projects
         </a>
         <a
           href="#contact"
-          className="inline-flex items-center gap-2 border-2 border-slate-200 text-slate-700 font-semibold px-7 py-3 rounded-full text-sm hover:border-accent hover:text-accent transition-colors"
+          className="inline-flex items-center gap-2 border-2 border-slate-200 text-slate-700 font-semibold px-7 py-3 rounded-full text-sm hover:border-accent hover:text-accent transition-colors cursor-pointer"
         >
           Get in touch
         </a>
@@ -77,7 +77,7 @@ export default function Hero() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
         <div className="w-5 h-8 border-2 border-slate-300 rounded-full flex justify-center pt-1.5">
-          <div className="w-1 h-2 bg-slate-400 rounded-full animate-bounce" />
+          <div className="w-1 h-2 bg-slate-400 rounded-full" />
         </div>
       </motion.div>
     </section>

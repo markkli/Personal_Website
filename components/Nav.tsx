@@ -48,7 +48,7 @@ export default function Nav() {
               <a
                 key={href}
                 href={href}
-                className="text-sm font-medium text-slate-600 hover:text-accent transition-colors"
+                className="text-sm font-medium text-slate-600 hover:text-accent transition-colors cursor-pointer"
               >
                 {label}
               </a>
