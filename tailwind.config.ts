@@ -9,8 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        accent: "#7c3aed",       // violet-700 — single aurora accent
-        "accent-hover": "#6d28d9",
+        // Dark base
+        night: "#05080f",
+        "night-card": "#0c1220",
+        "night-border": "rgba(255,255,255,0.08)",
+        // Aurora accents — used sparingly
+        "aurora-green": "#34d399",  // emerald-400, classic aurora green
+        "aurora-teal": "#22d3ee",   // cyan-400
+        "aurora-purple": "#a78bfa", // violet-400
+        // Primary interactive accent
+        accent: "#34d399",
+        "accent-hover": "#10b981",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],

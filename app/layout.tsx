@@ -12,7 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Mark Li — Data Scientist & AI Engineer",
   description:
-    "Portfolio of Mark (Xiaohang) Li, a Data Scientist & AI Engineer building at the intersection of AI, data, and software.",
+    "Portfolio of Mark Li, a Data Scientist & AI Engineer building at the intersection of AI, data, and software.",
 };
 
 export default function RootLayout({
@@ -22,9 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
-      <body className="antialiased bg-white text-slate-900 font-sans">
-        {children}
-      </body>
+      <body className="antialiased font-sans">{children}</body>
     </html>
   );
 }

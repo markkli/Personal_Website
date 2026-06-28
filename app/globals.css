@@ -3,13 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  color-scheme: dark;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  background-color: #05080f;
+  color: #e2e8f0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -18,15 +17,88 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Aurora gradient — used ONLY on the hero name */
-.aurora-text {
-  background: linear-gradient(135deg, #06b6d4 0%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* ─── Aurora curtain — hero only ─── */
+/* Luminous bands of green, teal, purple against the dark sky.
+   Three overlapping ellipses blurred together simulate the curtain/ribbon shape of real aurora. */
+.aurora-curtain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-curtain::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -20%;
+  right: -20%;
+  height: 75%;
+  background:
+    radial-gradient(ellipse 100% 80% at 50% 0%,   rgba(52, 211, 153, 0.28) 0%, transparent 65%),
+    radial-gradient(ellipse 70%  65% at 15% -10%, rgba(34, 211, 238, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 80%  60% at 85% -5%,  rgba(167, 139, 250, 0.16) 0%, transparent 58%),
+    radial-gradient(ellipse 50%  45% at 38% 20%,  rgba(16, 185, 129, 0.10) 0%, transparent 50%);
+  filter: blur(55px);
+  animation: aurora-drift 14s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.aurora-curtain::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  right: -10%;
+  height: 50%;
+  background:
+    radial-gradient(ellipse 60% 50% at 65% 10%, rgba(52, 211, 153, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 25% 5%,  rgba(167, 139, 250, 0.10) 0%, transparent 50%);
+  filter: blur(80px);
+  animation: aurora-drift 18s ease-in-out infinite alternate-reverse;
+  will-change: transform, opacity;
+}
+
+@keyframes aurora-drift {
+  0%   { transform: translateX(0%)   scaleX(1)    scaleY(1);    opacity: 0.85; }
+  25%  { transform: translateX(2%)   scaleX(1.03) scaleY(0.97); opacity: 1;    }
+  50%  { transform: translateX(-1%)  scaleX(0.98) scaleY(1.02); opacity: 0.9;  }
+  75%  { transform: translateX(1.5%) scaleX(1.01) scaleY(0.99); opacity: 0.95; }
+  100% { transform: translateX(-2%)  scaleX(1.02) scaleY(1.01); opacity: 0.88; }
+}
+
+/* ─── Utility: faint star field in hero ─── */
+.stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 15%  20%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 72%  8%,  rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45%  35%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 88%  55%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30%  60%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60%  15%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 8%   70%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55%  80%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 92%  25%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 20%  45%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 78% 40%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 35% 75%, rgba(255,255,255,0.5) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* ─── Aurora text glow — used on hero name ─── */
+.aurora-glow {
+  text-shadow:
+    0 0 60px rgba(52, 211, 153, 0.4),
+    0 0 120px rgba(34, 211, 238, 0.2);
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .aurora-curtain::before,
+  .aurora-curtain::after {
+    animation: none;
+  }
   * {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;

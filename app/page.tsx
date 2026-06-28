@@ -18,8 +18,8 @@ export default function Home() {
       <Experience />
       <Education />
       <Contact />
-      <footer className="py-8 text-center text-sm text-slate-400 bg-slate-50 border-t border-slate-100">
-        © {new Date().getFullYear()} Mark Li — built with Next.js &amp; Tailwind
+      <footer className="py-8 text-center text-sm text-slate-600 bg-night border-t border-white/[0.05]">
+        © {new Date().getFullYear()} Mark Li
       </footer>
     </main>
   );

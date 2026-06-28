@@ -38,7 +38,7 @@ const projects: Project[] = [
     title: "Wildfire Risk Assessment",
     subtitle: "Python",
     description:
-      "Hybrid ML system predicting wildfire risk from satellite imagery. XGBoost tabular model (F2: 56%) + ResNet-18 classifier for 4-class risk prediction. Production REST API + Docker.",
+      "Hybrid ML system predicting wildfire risk from satellite imagery. XGBoost (F2: 56%) + ResNet-18 for 4-class risk prediction. Production REST API + Docker.",
     tags: ["PyTorch", "XGBoost", "ResNet", "Computer Vision", "Docker"],
     links: [{ label: "GitHub", href: "https://github.com/markkli/Wildfire-Risk-Risk-Assessment-Based-on-Satellite-Imagery" }],
     image: null, // → /public/projects/wildfire.jpg
@@ -66,6 +66,7 @@ const projects: Project[] = [
 function ProjectCard({ project, delay }: { project: Project; delay: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const initials = project.title.split(" ").map(w => w[0]).join("").slice(0, 3);
 
   return (
     <motion.div
@@ -73,33 +74,41 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
-      className="group border border-slate-200 rounded-xl bg-white flex flex-col hover:border-slate-400 hover:shadow-md transition-all duration-200 overflow-hidden"
+      className="group border border-white/[0.07] rounded-xl bg-night-card flex flex-col hover:border-aurora-green/25 transition-all duration-250 overflow-hidden"
     >
-      {/* Image area */}
-      <div className="relative h-40 bg-slate-900 flex items-center justify-center overflow-hidden">
+      {/* Card header — placeholder until image is added */}
+      <div className="relative h-40 bg-night border-b border-white/[0.06] flex items-center justify-center overflow-hidden">
         {project.image ? (
-          // Uncomment when you add an image:
-          // <Image src={project.image} alt={project.title} fill className="object-cover opacity-80" />
-          <span />
+          // When you add an image, replace with:
+          // <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover opacity-60" />
+          null
         ) : (
-          <span className="text-slate-600 text-5xl font-black tracking-tighter select-none opacity-20">
-            {project.title.split(" ").map(w => w[0]).join("").slice(0, 3)}
-          </span>
+          <>
+            {/* Subtle aurora glow behind initials */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-aurora-green/10 blur-2xl" />
+            </div>
+            <span className="text-5xl font-black tracking-tighter text-white/10 group-hover:text-white/20 transition-colors duration-300 select-none">
+              {initials}
+            </span>
+            <p className="absolute bottom-3 left-0 right-0 text-center text-xs text-slate-600">
+              add image → /public/projects/
+            </p>
+          </>
         )}
-        {/* Drop image files into /public/projects/ to replace placeholders */}
       </div>
 
       <div className="p-5 flex flex-col gap-3 flex-1">
         <div>
-          <h3 className="font-bold text-slate-900 text-base">{project.title}</h3>
-          <p className="text-xs text-slate-400 mt-0.5">{project.subtitle}</p>
+          <h3 className="font-bold text-white text-base">{project.title}</h3>
+          <p className="text-xs text-slate-500 mt-0.5">{project.subtitle}</p>
         </div>
 
-        <p className="text-slate-500 text-sm leading-relaxed flex-1">{project.description}</p>
+        <p className="text-slate-400 text-sm leading-relaxed flex-1">{project.description}</p>
 
         <div className="flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
-            <span key={tag} className="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded">
+            <span key={tag} className="px-2.5 py-1 bg-night border border-white/[0.06] text-slate-400 text-xs font-medium rounded">
               {tag}
             </span>
           ))}
@@ -112,7 +121,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-semibold text-accent hover:text-accent-hover transition-colors cursor-pointer"
+              className="text-sm font-semibold text-aurora-green hover:text-accent-hover transition-colors cursor-pointer"
             >
               {link.label} →
             </a>
@@ -125,7 +134,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 bg-slate-50 px-6">
+    <section id="projects" className="py-24 bg-night px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -133,8 +142,8 @@ export default function Projects() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.55 }}
         >
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">Projects</p>
-          <h2 className="text-3xl font-bold text-slate-900 mb-10">Things I&apos;ve built</h2>
+          <p className="text-xs font-semibold uppercase tracking-widest text-aurora-green mb-3">Projects</p>
+          <h2 className="text-3xl font-bold text-white mb-10">Things I&apos;ve built</h2>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

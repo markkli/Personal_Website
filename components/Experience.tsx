@@ -74,19 +74,20 @@ function TimelineItem({ job, delay, isLast }: { job: typeof jobs[0]; delay: numb
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
       className="relative pl-7"
     >
-      <div className="absolute left-0 top-[7px] w-2.5 h-2.5 rounded-full bg-accent ring-2 ring-white ring-offset-1 ring-offset-white" />
-      {!isLast && <div className="absolute left-[4px] top-5 bottom-0 w-px bg-slate-200" />}
+      {/* Aurora green dot */}
+      <div className="absolute left-0 top-[7px] w-2.5 h-2.5 rounded-full bg-aurora-green shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
+      {!isLast && <div className="absolute left-[4px] top-5 bottom-0 w-px bg-white/[0.07]" />}
 
       <div className="pb-9">
-        <h3 className="font-semibold text-slate-900 text-sm leading-snug">{job.title}</h3>
+        <h3 className="font-semibold text-white text-sm leading-snug">{job.title}</h3>
         <div className="flex flex-wrap items-center gap-x-2 mt-1">
-          <span className="text-accent text-sm font-semibold">{job.company}</span>
-          <span className="text-slate-400 text-xs">{job.type}</span>
-          <span className="text-slate-400 text-xs">{job.period}</span>
-          {job.location && <span className="text-slate-400 text-xs">{job.location}</span>}
+          <span className="text-aurora-green text-sm font-semibold">{job.company}</span>
+          <span className="text-slate-600 text-xs">{job.type}</span>
+          <span className="text-slate-500 text-xs">{job.period}</span>
+          {job.location && <span className="text-slate-600 text-xs">{job.location}</span>}
         </div>
         {job.description && (
-          <p className="text-slate-500 text-sm mt-1.5 leading-relaxed">{job.description}</p>
+          <p className="text-slate-400 text-sm mt-1.5 leading-relaxed">{job.description}</p>
         )}
       </div>
     </motion.div>
@@ -95,7 +96,7 @@ function TimelineItem({ job, delay, isLast }: { job: typeof jobs[0]; delay: numb
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 bg-white px-6">
+    <section id="experience" className="py-24 bg-night-card px-6">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -103,8 +104,8 @@ export default function Experience() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.55 }}
         >
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">Experience</p>
-          <h2 className="text-3xl font-bold text-slate-900 mb-10">Where I&apos;ve worked</h2>
+          <p className="text-xs font-semibold uppercase tracking-widest text-aurora-green mb-3">Experience</p>
+          <h2 className="text-3xl font-bold text-white mb-10">Where I&apos;ve worked</h2>
         </motion.div>
 
         {jobs.map((job, i) => (

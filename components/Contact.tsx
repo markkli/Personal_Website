@@ -38,12 +38,12 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 bg-white px-6">
+    <section id="contact" className="py-24 bg-night-card px-6">
       <div className="max-w-3xl mx-auto">
         <FadeIn>
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">Contact</p>
-          <h2 className="text-3xl font-bold text-slate-900 mb-2">Say hi</h2>
-          <p className="text-slate-500 mb-10">Open to interesting opportunities and conversations.</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-aurora-green mb-3">Contact</p>
+          <h2 className="text-3xl font-bold text-white mb-2">Say hi</h2>
+          <p className="text-slate-400 mb-10">Open to interesting opportunities and conversations.</p>
         </FadeIn>
 
         <div className="flex flex-col sm:flex-row gap-3 flex-wrap">
@@ -53,12 +53,12 @@ export default function Contact() {
                 href={link.href}
                 target={link.href.startsWith("mailto") ? undefined : "_blank"}
                 rel="noopener noreferrer"
-                className="flex flex-col gap-0.5 border border-slate-200 rounded-xl px-5 py-4 hover:border-accent hover:text-accent transition-colors cursor-pointer group"
+                className="flex flex-col gap-0.5 border border-white/[0.07] rounded-xl px-5 py-4 bg-night hover:border-aurora-green/30 transition-colors cursor-pointer group"
               >
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 group-hover:text-accent/60 transition-colors">
+                <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 group-hover:text-aurora-green/70 transition-colors">
                   {link.label}
                 </span>
-                <span className="text-sm font-medium text-slate-700 group-hover:text-accent transition-colors">
+                <span className="text-sm font-medium text-slate-300 group-hover:text-aurora-green transition-colors">
                   {link.value}
                 </span>
               </a>
