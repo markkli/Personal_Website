@@ -17,57 +17,120 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ─── Aurora curtain — hero only ─── */
-/* Luminous bands of green, teal, purple against the dark sky.
-   Three overlapping ellipses blurred together simulate the curtain/ribbon shape of real aurora. */
-.aurora-curtain {
+/* ═══════════════════════════════════════════════════════════
+   AURORA SCENE — Alaska night landscape (hero only)
+   Layers, back → front:
+     1. .aurora-sky    deep night gradient
+     2. .stars         twinkling star field
+     3. .ribbon(s)     flowing aurora curtains (additive light)
+     4. mountains      SVG silhouettes (inlined in Hero.tsx)
+   ═══════════════════════════════════════════════════════════ */
+
+.aurora-scene {
   position: absolute;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
 }
 
-.aurora-curtain::before {
-  content: '';
+/* Night sky — deep navy up top, slightly lifted toward the horizon */
+.aurora-sky {
   position: absolute;
-  top: -30%;
-  left: -20%;
-  right: -20%;
-  height: 75%;
-  background:
-    radial-gradient(ellipse 100% 80% at 50% 0%,   rgba(52, 211, 153, 0.28) 0%, transparent 65%),
-    radial-gradient(ellipse 70%  65% at 15% -10%, rgba(34, 211, 238, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 80%  60% at 85% -5%,  rgba(167, 139, 250, 0.16) 0%, transparent 58%),
-    radial-gradient(ellipse 50%  45% at 38% 20%,  rgba(16, 185, 129, 0.10) 0%, transparent 50%);
-  filter: blur(55px);
-  animation: aurora-drift 14s ease-in-out infinite alternate;
-  will-change: transform, opacity;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    #04060e 0%,
+    #05080f 35%,
+    #070d1d 65%,
+    #0a1428 100%
+  );
 }
 
-.aurora-curtain::after {
-  content: '';
+/* ─── Aurora ribbons — vertical curtains of light ───
+   Each ribbon is a tall, soft vertical gradient, heavily blurred and
+   blended with `screen` so overlapping bands add light like real aurora.
+   Different durations/origins keep the motion organic (never synced). */
+.ribbon {
+  position: absolute;
+  top: -12%;
+  height: 80%;
+  border-radius: 50%;
+  filter: blur(45px);
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+  transform-origin: bottom center;
+}
+
+.ribbon-1 {
+  left: 4%;
+  width: 26%;
+  background: linear-gradient(to top, transparent 0%, rgba(52, 211, 153, 0.50) 38%, rgba(45, 212, 191, 0.30) 68%, transparent 100%);
+  animation: sway-a 17s ease-in-out infinite alternate;
+}
+.ribbon-2 {
+  left: 24%;
+  width: 30%;
+  background: linear-gradient(to top, transparent 4%, rgba(34, 211, 238, 0.42) 42%, rgba(52, 211, 153, 0.28) 72%, transparent 100%);
+  animation: sway-b 21s ease-in-out infinite alternate;
+  animation-delay: -4s;
+}
+.ribbon-3 {
+  left: 46%;
+  width: 28%;
+  background: linear-gradient(to top, transparent 2%, rgba(52, 211, 153, 0.46) 40%, rgba(129, 140, 248, 0.20) 75%, transparent 100%);
+  animation: sway-c 15s ease-in-out infinite alternate;
+  animation-delay: -7s;
+}
+.ribbon-4 {
+  left: 64%;
+  width: 30%;
+  background: linear-gradient(to top, transparent 5%, rgba(167, 139, 250, 0.38) 45%, rgba(34, 211, 238, 0.22) 74%, transparent 100%);
+  animation: sway-b 19s ease-in-out infinite alternate-reverse;
+  animation-delay: -2s;
+}
+.ribbon-5 {
+  left: 80%;
+  width: 24%;
+  background: linear-gradient(to top, transparent 6%, rgba(45, 212, 191, 0.40) 44%, rgba(52, 211, 153, 0.24) 76%, transparent 100%);
+  animation: sway-a 23s ease-in-out infinite alternate;
+  animation-delay: -10s;
+}
+
+/* A wide, very soft halo that fills the gaps so the curtains read as one sheet */
+.aurora-haze {
   position: absolute;
   top: -20%;
   left: -10%;
   right: -10%;
-  height: 50%;
-  background:
-    radial-gradient(ellipse 60% 50% at 65% 10%, rgba(52, 211, 153, 0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 25% 5%,  rgba(167, 139, 250, 0.10) 0%, transparent 50%);
-  filter: blur(80px);
-  animation: aurora-drift 18s ease-in-out infinite alternate-reverse;
-  will-change: transform, opacity;
+  height: 70%;
+  background: radial-gradient(ellipse 70% 60% at 50% 10%, rgba(52, 211, 153, 0.18) 0%, transparent 65%);
+  filter: blur(70px);
+  mix-blend-mode: screen;
+  animation: haze-pulse 12s ease-in-out infinite alternate;
+  will-change: opacity, transform;
 }
 
-@keyframes aurora-drift {
-  0%   { transform: translateX(0%)   scaleX(1)    scaleY(1);    opacity: 0.85; }
-  25%  { transform: translateX(2%)   scaleX(1.03) scaleY(0.97); opacity: 1;    }
-  50%  { transform: translateX(-1%)  scaleX(0.98) scaleY(1.02); opacity: 0.9;  }
-  75%  { transform: translateX(1.5%) scaleX(1.01) scaleY(0.99); opacity: 0.95; }
-  100% { transform: translateX(-2%)  scaleX(1.02) scaleY(1.01); opacity: 0.88; }
+@keyframes sway-a {
+  0%   { transform: translateX(0)    skewX(0deg)  scaleY(1);    opacity: 0.65; }
+  50%  { transform: translateX(7%)   skewX(-7deg) scaleY(1.10); opacity: 1;    }
+  100% { transform: translateX(-4%)  skewX(5deg)  scaleY(0.94); opacity: 0.78; }
+}
+@keyframes sway-b {
+  0%   { transform: translateX(-3%)  skewX(4deg)   scaleY(0.96); opacity: 0.6;  }
+  50%  { transform: translateX(6%)   skewX(-5deg)  scaleY(1.12); opacity: 0.95; }
+  100% { transform: translateX(2%)   skewX(7deg)   scaleY(1);    opacity: 0.72; }
+}
+@keyframes sway-c {
+  0%   { transform: translateX(2%)   skewX(-6deg)  scaleY(1.04); opacity: 0.7;  }
+  50%  { transform: translateX(-6%)  skewX(6deg)   scaleY(0.92); opacity: 1;    }
+  100% { transform: translateX(4%)   skewX(-3deg)  scaleY(1.08); opacity: 0.8;  }
+}
+@keyframes haze-pulse {
+  0%   { opacity: 0.55; transform: translateX(0)    scaleX(1);    }
+  100% { opacity: 0.9;  transform: translateX(3%)   scaleX(1.05); }
 }
 
-/* ─── Utility: faint star field in hero ─── */
+/* ─── Twinkling star field ─── */
 .stars {
   position: absolute;
   inset: 0;
@@ -75,15 +138,34 @@ html {
     radial-gradient(1px 1px at 15%  20%, rgba(255,255,255,0.5) 0%, transparent 100%),
     radial-gradient(1px 1px at 72%  8%,  rgba(255,255,255,0.4) 0%, transparent 100%),
     radial-gradient(1px 1px at 45%  35%, rgba(255,255,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 88%  55%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 30%  60%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 88%  18%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30%  25%, rgba(255,255,255,0.2) 0%, transparent 100%),
     radial-gradient(1px 1px at 60%  15%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 8%   70%, rgba(255,255,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 55%  80%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 8%   30%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55%  28%, rgba(255,255,255,0.2) 0%, transparent 100%),
     radial-gradient(1px 1px at 92%  25%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 20%  45%, rgba(255,255,255,0.3) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 78% 40%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 35% 75%, rgba(255,255,255,0.5) 0%, transparent 100%);
+    radial-gradient(1px 1px at 20%  12%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 78% 10%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 38% 18%, rgba(255,255,255,0.5) 0%, transparent 100%);
+  pointer-events: none;
+  animation: twinkle 6s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0%   { opacity: 0.5; }
+  100% { opacity: 1;   }
+}
+
+/* Soft green rim-glow sitting just above the mountain ridgeline */
+.ridge-glow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 30%;
+  height: 18%;
+  background: radial-gradient(ellipse 60% 100% at 50% 100%, rgba(52, 211, 153, 0.22) 0%, transparent 70%);
+  filter: blur(30px);
+  mix-blend-mode: screen;
   pointer-events: none;
 }
 
@@ -95,9 +177,10 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .aurora-curtain::before,
-  .aurora-curtain::after {
-    animation: none;
+  .ribbon,
+  .aurora-haze,
+  .stars {
+    animation: none !important;
   }
   * {
     animation-duration: 0.01ms !important;
