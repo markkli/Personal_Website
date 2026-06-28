@@ -9,17 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        accent: "#06b6d4",       // cyan-500 — aurora teal
-        "accent-hover": "#0891b2",
-        "accent-2": "#8b5cf6",   // violet-500 — aurora purple
-        surface: "#f0fdfa",      // very light teal
-        "surface-2": "#faf5ff",  // very light lavender
+        accent: "#7c3aed",       // violet-700 — single aurora accent
+        "accent-hover": "#6d28d9",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],
-      },
-      backgroundImage: {
-        "aurora-gradient": "linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%)",
       },
     },
   },

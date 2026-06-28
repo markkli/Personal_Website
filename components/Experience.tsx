@@ -3,24 +3,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-interface Job {
-  title: string;
-  company: string;
-  type: string;
-  period: string;
-  location: string;
-  description: string;
-}
-
-const jobs: Job[] = [
+const jobs = [
   {
     title: "Catastrophe Modeling Analyst — Data Science & Automation",
     company: "Aon",
     type: "Full-time",
     period: "Oct 2025 – Present",
     location: "Bloomington, MN",
-    description:
-      "Working at the intersection of insurance risk, data science, and AI. Building automation and modeling pipelines using Azure Databricks, Snowflake, and ML tools.",
+    description: "Working at the intersection of insurance risk, data science, and AI. Building automation and modeling pipelines using Azure Databricks, Snowflake, and ML tools.",
   },
   {
     title: "Catastrophe Modeling Intern",
@@ -72,38 +62,31 @@ const jobs: Job[] = [
   },
 ];
 
-function TimelineItem({ job, delay, isLast }: { job: Job; delay: number; isLast: boolean }) {
+function TimelineItem({ job, delay, isLast }: { job: typeof jobs[0]; delay: number; isLast: boolean }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: -20 }}
+      initial={{ opacity: 0, x: -16 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.55, delay, ease: "easeOut" }}
-      className="relative pl-8"
+      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      className="relative pl-7"
     >
-      {/* Aurora gradient dot */}
-      <div className="absolute left-0 top-1.5 w-3 h-3 rounded-full gradient-aurora ring-2 ring-white shadow-sm" />
-      {!isLast && (
-        <div className="absolute left-[5px] top-4 bottom-0 w-[2px] bg-gradient-to-b from-cyan-200 to-violet-200" />
-      )}
+      <div className="absolute left-0 top-[7px] w-2.5 h-2.5 rounded-full bg-accent ring-2 ring-white ring-offset-1 ring-offset-white" />
+      {!isLast && <div className="absolute left-[4px] top-5 bottom-0 w-px bg-slate-200" />}
 
-      <div className="pb-10">
-        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 mb-1">
-          <h3 className="font-bold text-slate-900 text-base">{job.title}</h3>
-          <span className="text-xs text-slate-400 font-medium">{job.type}</span>
-        </div>
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mb-2">
-          <span className="font-semibold text-accent text-sm">{job.company}</span>
-          <span className="text-slate-400 text-sm">{job.period}</span>
-          {job.location && (
-            <span className="text-slate-400 text-sm">{job.location}</span>
-          )}
+      <div className="pb-9">
+        <h3 className="font-semibold text-slate-900 text-sm leading-snug">{job.title}</h3>
+        <div className="flex flex-wrap items-center gap-x-2 mt-1">
+          <span className="text-accent text-sm font-semibold">{job.company}</span>
+          <span className="text-slate-400 text-xs">{job.type}</span>
+          <span className="text-slate-400 text-xs">{job.period}</span>
+          {job.location && <span className="text-slate-400 text-xs">{job.location}</span>}
         </div>
         {job.description && (
-          <p className="text-slate-600 text-sm leading-relaxed">{job.description}</p>
+          <p className="text-slate-500 text-sm mt-1.5 leading-relaxed">{job.description}</p>
         )}
       </div>
     </motion.div>
@@ -115,25 +98,23 @@ export default function Experience() {
     <section id="experience" className="py-24 bg-white px-6">
       <div className="max-w-3xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.55 }}
         >
-          <h2 className="text-3xl font-bold text-slate-900 mb-2">Experience</h2>
-          <div className="w-12 h-1 rounded gradient-aurora mb-10" />
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">Experience</p>
+          <h2 className="text-3xl font-bold text-slate-900 mb-10">Where I&apos;ve worked</h2>
         </motion.div>
 
-        <div>
-          {jobs.map((job, i) => (
-            <TimelineItem
-              key={`${job.title}-${job.company}`}
-              job={job}
-              delay={i * 0.07}
-              isLast={i === jobs.length - 1}
-            />
-          ))}
-        </div>
+        {jobs.map((job, i) => (
+          <TimelineItem
+            key={`${job.title}-${job.company}`}
+            job={job}
+            delay={i * 0.06}
+            isLast={i === jobs.length - 1}
+          />
+        ))}
       </div>
     </section>
   );

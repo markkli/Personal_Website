@@ -4,81 +4,60 @@ import { motion } from "framer-motion";
 
 function fadeUp(delay: number) {
   return {
-    initial: { opacity: 0, y: 24 },
+    initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, delay, ease: "easeOut" as const },
+    transition: { duration: 0.55, delay, ease: "easeOut" as const },
   };
 }
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center aurora-bg px-6 text-center overflow-hidden">
-      {/* Decorative aurora blobs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-cyan-400/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-violet-400/10 blur-3xl pointer-events-none" />
-
+    <section className="min-h-screen flex flex-col items-center justify-center bg-white px-6 text-center">
       {/* Profile picture */}
-      <motion.div {...fadeUp(0)} className="mb-6">
-        {/* Replace with: <Image src="/profile.jpg" alt="Mark Li" width={96} height={96} className="rounded-full object-cover ring-4 ring-white shadow-lg" /> */}
-        {/* Profile image placeholder — drop /public/profile.jpg to replace */}
-        <div className="w-24 h-24 rounded-full gradient-aurora flex items-center justify-center text-white text-3xl font-bold shadow-lg ring-4 ring-white select-none">
+      <motion.div {...fadeUp(0)} className="mb-8">
+        {/*
+          To add your photo:
+          1. Drop profile.jpg into /public/
+          2. Replace the div below with:
+             <img src="/profile.jpg" alt="Mark Li" className="w-24 h-24 rounded-full object-cover ring-4 ring-slate-100 shadow-md" />
+        */}
+        <div className="w-24 h-24 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-3xl font-bold shadow-sm ring-4 ring-white select-none">
           M
         </div>
       </motion.div>
 
-      <motion.p
-        {...fadeUp(0.05)}
-        className="text-slate-500 font-medium text-base mb-2"
-      >
+      <motion.p {...fadeUp(0.08)} className="text-slate-400 text-base font-medium mb-3 tracking-wide">
         hey, I&apos;m
       </motion.p>
 
       <motion.h1
-        {...fadeUp(0.12)}
-        className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight aurora-text"
+        {...fadeUp(0.15)}
+        className="text-6xl sm:text-7xl md:text-8xl font-extrabold leading-none tracking-tight aurora-text"
       >
         Mark Li
       </motion.h1>
 
-      <motion.p
-        {...fadeUp(0.22)}
-        className="mt-3 text-lg sm:text-xl font-semibold text-slate-700"
-      >
+      <motion.p {...fadeUp(0.25)} className="mt-5 text-xl sm:text-2xl font-semibold text-slate-800">
         Data Scientist &amp; AI Engineer
       </motion.p>
 
-      <motion.p
-        {...fadeUp(0.32)}
-        className="mt-3 text-base sm:text-lg text-slate-500 max-w-lg"
-      >
+      <motion.p {...fadeUp(0.35)} className="mt-3 text-base text-slate-400 max-w-md leading-relaxed">
         Building at the intersection of AI, data, and software.
       </motion.p>
 
-      <motion.div
-        {...fadeUp(0.45)}
-        className="mt-8 flex flex-wrap gap-4 justify-center"
-      >
+      <motion.div {...fadeUp(0.45)} className="mt-10 flex flex-wrap gap-3 justify-center">
         <a
           href="#projects"
-          className="inline-flex items-center gap-2 gradient-aurora text-white font-semibold px-7 py-3 rounded-full text-sm hover:opacity-90 transition-opacity shadow-lg shadow-cyan-200/50 cursor-pointer"
+          className="bg-accent text-white font-semibold px-7 py-3 rounded-lg text-sm hover:bg-accent-hover transition-colors cursor-pointer shadow-sm"
         >
           View Projects
         </a>
         <a
           href="#contact"
-          className="inline-flex items-center gap-2 border-2 border-slate-200 text-slate-700 font-semibold px-7 py-3 rounded-full text-sm hover:border-accent hover:text-accent transition-colors cursor-pointer"
+          className="border border-slate-200 text-slate-700 font-semibold px-7 py-3 rounded-lg text-sm hover:border-slate-400 hover:text-slate-900 transition-colors cursor-pointer"
         >
           Get in touch
         </a>
-      </motion.div>
-
-      <motion.div
-        {...fadeUp(0.6)}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-5 h-8 border-2 border-slate-300 rounded-full flex justify-center pt-1.5">
-          <div className="w-1 h-2 bg-slate-400 rounded-full" />
-        </div>
       </motion.div>
     </section>
   );
