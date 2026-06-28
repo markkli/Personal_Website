@@ -134,7 +134,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 bg-night px-6">
+    <section id="projects" className="py-24 bg-night/40 px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

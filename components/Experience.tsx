@@ -96,7 +96,7 @@ function TimelineItem({ job, delay, isLast }: { job: typeof jobs[0]; delay: numb
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 bg-night-card px-6">
+    <section id="experience" className="py-24 bg-night-card/55 px-6">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

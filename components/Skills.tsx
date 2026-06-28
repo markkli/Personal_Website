@@ -43,7 +43,7 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 bg-night-card px-6">
+    <section id="skills" className="py-24 bg-night-card/55 px-6">
       <div className="max-w-4xl mx-auto">
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-widest text-aurora-green mb-3">Skills</p>

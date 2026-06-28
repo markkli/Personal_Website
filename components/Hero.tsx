@@ -6,6 +6,7 @@ import {
   useTransform,
   useMotionTemplate,
 } from "framer-motion";
+import Image from "next/image";
 import { useRef } from "react";
 
 function fadeUp(delay: number) {
@@ -104,16 +105,19 @@ export default function Hero() {
         {/* Contrast scrim — guarantees the copy stays readable over the aurora */}
         <div className="absolute inset-0 -z-10 scale-150 bg-[radial-gradient(ellipse_at_center,rgba(4,6,14,0.7)_0%,transparent_70%)]" />
 
-        {/* Profile picture */}
+        {/* Profile picture — swap /public/profile.jpg to change it */}
         <motion.div {...fadeUp(0)} className="mb-8">
-          {/*
-            To add your photo:
-            Drop /public/profile.jpg and replace the div below with:
-            <img src="/profile.jpg" alt="Mark Li"
-              className="w-24 h-24 rounded-full object-cover ring-2 ring-aurora-green/40 shadow-lg shadow-aurora-green/20" />
-          */}
-          <div className="w-24 h-24 rounded-full bg-night-card/80 backdrop-blur-sm border border-white/10 flex items-center justify-center text-aurora-green text-3xl font-bold shadow-lg shadow-aurora-green/20 select-none ring-2 ring-aurora-green/25">
-            M
+          <div className="relative">
+            {/* soft aurora halo behind the photo */}
+            <div className="absolute -inset-3 rounded-full bg-aurora-green/20 blur-xl" />
+            <Image
+              src="/profile.jpg"
+              alt="Mark Li"
+              width={176}
+              height={176}
+              priority
+              className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover ring-2 ring-aurora-green/40 shadow-xl shadow-aurora-green/20"
+            />
           </div>
         </motion.div>
 

@@ -1,4 +1,5 @@
 import Nav from "@/components/Nav";
+import Globe from "@/components/Globe";
 
 interface TravelEntry {
   location: string;
@@ -32,21 +33,33 @@ export default function TravelPage() {
   return (
     <>
       <Nav />
-      <main className="min-h-screen pt-28 pb-20 bg-night">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="mb-14">
-            <p className="text-xs font-semibold uppercase tracking-widest text-aurora-green mb-3">Travel</p>
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-3">Places I&apos;ve been</h1>
-            <p className="text-slate-400 text-lg max-w-md">Collecting memories across time zones. More stories coming.</p>
+      <main className="min-h-screen pt-28 pb-20">
+        <div className="max-w-5xl mx-auto px-6">
+          {/* Header + globe */}
+          <div className="grid lg:grid-cols-2 gap-10 items-center mb-16">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-aurora-green mb-3">
+                Travel
+              </p>
+              <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-3">
+                Places I&apos;ve been
+              </h1>
+              <p className="text-slate-400 text-lg max-w-md">
+                A data scientist who collects time zones. Drag the globe to spin
+                it — each glowing dot is somewhere I&apos;ve lived or worked.
+              </p>
+            </div>
+            <Globe />
           </div>
 
+          {/* Trip cards */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {trips.map((trip) => (
               <div
                 key={trip.location}
-                className="border border-white/[0.07] rounded-xl overflow-hidden bg-night-card hover:border-aurora-green/25 transition-colors"
+                className="border border-white/[0.08] rounded-xl overflow-hidden bg-night-card/70 backdrop-blur-sm hover:border-aurora-green/25 transition-colors"
               >
-                <div className="h-44 bg-night relative flex items-end p-4 border-b border-white/[0.06]">
+                <div className="h-44 bg-night/60 relative flex items-end p-4 border-b border-white/[0.06]">
                   {/*
                     To add a photo, replace this div's contents with:
                     <img src={trip.image} alt={trip.location}
@@ -63,15 +76,17 @@ export default function TravelPage() {
               </div>
             ))}
 
-            <div className="border-2 border-dashed border-white/[0.07] rounded-xl flex flex-col items-center justify-center h-52 gap-2">
-              <div className="w-8 h-8 rounded-full bg-aurora-green/10 border border-aurora-green/30 flex items-center justify-center text-aurora-green text-lg font-bold select-none">+</div>
+            <div className="border-2 border-dashed border-white/[0.08] rounded-xl flex flex-col items-center justify-center h-52 gap-2">
+              <div className="w-8 h-8 rounded-full bg-aurora-green/10 border border-aurora-green/30 flex items-center justify-center text-aurora-green text-lg font-bold select-none">
+                +
+              </div>
               <p className="text-slate-600 text-sm">More coming soon</p>
             </div>
           </div>
         </div>
       </main>
 
-      <footer className="py-8 text-center text-sm text-slate-600 bg-night border-t border-white/[0.05]">
+      <footer className="py-8 text-center text-sm text-slate-600 border-t border-white/[0.05]">
         © {new Date().getFullYear()} Mark Li
       </footer>
     </>

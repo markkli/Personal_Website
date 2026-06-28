@@ -38,7 +38,7 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 bg-night-card px-6">
+    <section id="contact" className="py-24 bg-night-card/55 px-6">
       <div className="max-w-3xl mx-auto">
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-widest text-aurora-green mb-3">Contact</p>

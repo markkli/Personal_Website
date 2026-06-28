@@ -52,46 +52,46 @@ html {
    Different durations/origins keep the motion organic (never synced). */
 .ribbon {
   position: absolute;
-  top: -12%;
-  height: 80%;
+  top: -15%;
+  height: 92%;
   border-radius: 50%;
-  filter: blur(45px);
+  filter: blur(42px) saturate(1.4) brightness(1.15);
   mix-blend-mode: screen;
   will-change: transform, opacity;
   transform-origin: bottom center;
 }
 
 .ribbon-1 {
-  left: 4%;
-  width: 26%;
-  background: linear-gradient(to top, transparent 0%, rgba(52, 211, 153, 0.50) 38%, rgba(45, 212, 191, 0.30) 68%, transparent 100%);
+  left: 2%;
+  width: 28%;
+  background: linear-gradient(to top, transparent 0%, rgba(52, 211, 153, 0.78) 38%, rgba(45, 212, 191, 0.48) 68%, transparent 100%);
   animation: sway-a 17s ease-in-out infinite alternate;
 }
 .ribbon-2 {
-  left: 24%;
-  width: 30%;
-  background: linear-gradient(to top, transparent 4%, rgba(34, 211, 238, 0.42) 42%, rgba(52, 211, 153, 0.28) 72%, transparent 100%);
+  left: 22%;
+  width: 32%;
+  background: linear-gradient(to top, transparent 4%, rgba(34, 211, 238, 0.68) 42%, rgba(52, 211, 153, 0.44) 72%, transparent 100%);
   animation: sway-b 21s ease-in-out infinite alternate;
   animation-delay: -4s;
 }
 .ribbon-3 {
-  left: 46%;
-  width: 28%;
-  background: linear-gradient(to top, transparent 2%, rgba(52, 211, 153, 0.46) 40%, rgba(129, 140, 248, 0.20) 75%, transparent 100%);
+  left: 44%;
+  width: 30%;
+  background: linear-gradient(to top, transparent 2%, rgba(52, 211, 153, 0.72) 40%, rgba(129, 140, 248, 0.36) 75%, transparent 100%);
   animation: sway-c 15s ease-in-out infinite alternate;
   animation-delay: -7s;
 }
 .ribbon-4 {
-  left: 64%;
-  width: 30%;
-  background: linear-gradient(to top, transparent 5%, rgba(167, 139, 250, 0.38) 45%, rgba(34, 211, 238, 0.22) 74%, transparent 100%);
+  left: 62%;
+  width: 32%;
+  background: linear-gradient(to top, transparent 5%, rgba(167, 139, 250, 0.60) 45%, rgba(34, 211, 238, 0.38) 74%, transparent 100%);
   animation: sway-b 19s ease-in-out infinite alternate-reverse;
   animation-delay: -2s;
 }
 .ribbon-5 {
-  left: 80%;
-  width: 24%;
-  background: linear-gradient(to top, transparent 6%, rgba(45, 212, 191, 0.40) 44%, rgba(52, 211, 153, 0.24) 76%, transparent 100%);
+  left: 78%;
+  width: 26%;
+  background: linear-gradient(to top, transparent 6%, rgba(45, 212, 191, 0.64) 44%, rgba(52, 211, 153, 0.40) 76%, transparent 100%);
   animation: sway-a 23s ease-in-out infinite alternate;
   animation-delay: -10s;
 }
@@ -102,9 +102,12 @@ html {
   top: -20%;
   left: -10%;
   right: -10%;
-  height: 70%;
-  background: radial-gradient(ellipse 70% 60% at 50% 10%, rgba(52, 211, 153, 0.18) 0%, transparent 65%);
-  filter: blur(70px);
+  height: 75%;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 8%, rgba(52, 211, 153, 0.30) 0%, transparent 62%),
+    radial-gradient(ellipse 50% 45% at 30% 4%, rgba(34, 211, 238, 0.20) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 50% at 72% 6%, rgba(167, 139, 250, 0.18) 0%, transparent 60%);
+  filter: blur(65px);
   mix-blend-mode: screen;
   animation: haze-pulse 12s ease-in-out infinite alternate;
   will-change: opacity, transform;
@@ -176,10 +179,83 @@ html {
     0 0 120px rgba(34, 211, 238, 0.2);
 }
 
+/* ─── Tech stack marquee (About section) ─── */
+.marquee {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.marquee-track {
+  animation: marquee 34s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SITE AURORA — persistent faint glow fixed behind ALL content.
+   Bright in the hero (which has its own scene on top); as you
+   scroll, this keeps a subtle living aurora behind every section.
+   ═══════════════════════════════════════════════════════════ */
+.site-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.site-aurora .glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.55;
+  will-change: transform;
+}
+.site-aurora .glow-a {
+  top: 5%;
+  left: -8%;
+  width: 48vw;
+  height: 48vw;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.55) 0%, transparent 68%);
+  animation: float-a 26s ease-in-out infinite alternate;
+}
+.site-aurora .glow-b {
+  top: 32%;
+  right: -10%;
+  width: 44vw;
+  height: 44vw;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.42) 0%, transparent 68%);
+  animation: float-b 32s ease-in-out infinite alternate;
+}
+.site-aurora .glow-c {
+  bottom: 2%;
+  left: 28%;
+  width: 42vw;
+  height: 42vw;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.38) 0%, transparent 68%);
+  animation: float-c 29s ease-in-out infinite alternate;
+}
+@keyframes float-a {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(9%, 7%); }
+}
+@keyframes float-b {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-7%, -9%); }
+}
+@keyframes float-c {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(6%, -6%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ribbon,
   .aurora-haze,
-  .stars {
+  .stars,
+  .site-aurora .glow {
     animation: none !important;
   }
   * {

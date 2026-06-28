@@ -33,7 +33,7 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Education() {
   return (
-    <section id="education" className="py-24 bg-night px-6">
+    <section id="education" className="py-24 bg-night/40 px-6">
       <div className="max-w-3xl mx-auto">
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-widest text-aurora-green mb-3">Education</p>

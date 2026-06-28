@@ -18,7 +18,7 @@ export default function Home() {
       <Experience />
       <Education />
       <Contact />
-      <footer className="py-8 text-center text-sm text-slate-600 bg-night border-t border-white/[0.05]">
+      <footer className="py-8 text-center text-sm text-slate-600 bg-night/70 border-t border-white/[0.05]">
         © {new Date().getFullYear()} Mark Li
       </footer>
     </main>
