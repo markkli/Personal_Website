@@ -47,7 +47,7 @@ function PhotoModal({
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") selected ? setSelected(null) : onClose();
+      if (e.key === "Escape") { if (selected) setSelected(null); else onClose(); }
       if (e.key === "ArrowLeft" && selected) prev();
       if (e.key === "ArrowRight" && selected) next();
     };
