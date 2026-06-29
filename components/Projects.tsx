@@ -20,7 +20,7 @@ const projects: Project[] = [
       "AI travel planning app with a FastAPI backend, RAG retrieval using ChromaDB, Pydantic itinerary schemas, and OpenAI generation. React + Vite frontend with itinerary generation and refinement controls.",
     tags: ["FastAPI", "RAG", "ChromaDB", "React", "OpenAI"],
     links: [{ label: "GitHub", href: "https://github.com/markkli/AI_Travel_Copilot" }],
-    image: null, // → /public/projects/ai-travel-copilot.jpg
+    image: "/projects/ai-travel-copilot.jpg"
   },
   {
     title: "Donna",
@@ -32,7 +32,7 @@ const projects: Project[] = [
       { label: "Backend", href: "https://github.com/VM-Donna/Donna_Backend" },
       { label: "Frontend", href: "https://github.com/VM-Donna/Donna_Frontend" },
     ],
-    image: null, // → /public/projects/donna.jpg
+    image: "/projects/donna.jpg"
   },
   {
     title: "Wildfire Risk Assessment",
@@ -41,7 +41,7 @@ const projects: Project[] = [
       "Hybrid ML system predicting wildfire risk from satellite imagery. XGBoost (F2: 56%) + ResNet-18 for 4-class risk prediction. Production REST API + Docker.",
     tags: ["PyTorch", "XGBoost", "ResNet", "Computer Vision", "Docker"],
     links: [{ label: "GitHub", href: "https://github.com/markkli/Wildfire-Risk-Risk-Assessment-Based-on-Satellite-Imagery" }],
-    image: null, // → /public/projects/wildfire.jpg
+    image: "/projects/wildfire.jpg"
   },
   {
     title: "Flowlist",
@@ -50,7 +50,7 @@ const projects: Project[] = [
       "Local-first productivity app that turns a goal into an AI-generated nested task roadmap with focus session tracking. OpenAI API for roadmap and subtask generation.",
     tags: ["React", "OpenAI", "Vite", "TypeScript"],
     links: [{ label: "GitHub", href: "https://github.com/markkli/Flowlist" }],
-    image: null, // → /public/projects/flowlist.jpg
+    image: "/projects/flowlist.jpg"
   },
   {
     title: "CNN-LSTM Chart Summary",
@@ -59,7 +59,7 @@ const projects: Project[] = [
       "End-to-end PyTorch framework generating natural-language summaries from chart images. CNN encoder + LSTM decoder with visual attention. +25% BLEU improvement over baseline.",
     tags: ["PyTorch", "CNN", "LSTM", "NLP", "Computer Vision"],
     links: [{ label: "GitHub", href: "https://github.com/markkli/CNN-LSTM-Chart-Summary-Generator" }],
-    image: null, // → /public/projects/cnn-lstm.jpg
+    image: "/projects/cnn-lstm.jpg"
   },
 ];
 
@@ -95,7 +95,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
               {initials}
             </span>
             <p className="absolute bottom-3 left-0 right-0 text-center text-xs text-slate-600">
-              add image → /public/projects/
+              add image → /projects/
             </p>
           </>
         )}

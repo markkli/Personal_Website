@@ -10,8 +10,8 @@ const funFacts = [
   { emoji: "🌎", text: "Lived & worked across Brazil, China & the US" },
   { emoji: "🐻", text: "Berkeley MEng → catastrophe modeling at Aon" },
   { emoji: "🛰️", text: "Taught a model to spot wildfires from space" },
-  { emoji: "☕", text: "Runs on espresso and curiosity" },
-  { emoji: "🏔️", text: "Sucker for a good aurora (hence this site)" },
+  { emoji: "☕", text: "I build stuff" },
+  { emoji: "🌌", text: "Astrophotography amateur" },
 ];
 
 // Tech logos via simple-icons CDN. `color` overrides logos that are too dark on a dark bg.
@@ -77,9 +77,9 @@ export default function About() {
           {/* Photo tile (2x2) */}
           <FadeIn className="sm:col-span-1 lg:col-span-2 lg:row-span-2">
             <div className={`${card} relative overflow-hidden h-64 lg:h-full min-h-[16rem] group`}>
-              {/* Swap /public/profile.jpg (or add /public/about.jpg) for a different shot */}
+              {/* Drop /public/about.jpg for the About photo (hero uses /public/profile.jpg) */}
               <Image
-                src="/profile.jpg"
+                src="/about.jpg"
                 alt="Mark Li"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

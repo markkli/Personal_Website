@@ -1,31 +1,63 @@
 import Nav from "@/components/Nav";
 import Globe from "@/components/Globe";
-
-interface TravelEntry {
-  location: string;
-  date: string;
-  description: string;
-  image: string | null;
-}
+import TravelGrid, { type TravelEntry } from "@/components/TravelGrid";
 
 const trips: TravelEntry[] = [
   {
-    location: "São Paulo, Brazil",
-    date: "Summer 2018",
-    description: "Interned at Santander Brasil — my first time in South America.",
-    image: null,
+    location: "Alaska",
+    date: "Mar 2025",
+    description: "Aurora hunting",
+    image: "/travel/alaska/cover.jpg",
+    slug: "alaska",
   },
   {
-    location: "Beijing, China",
-    date: "2022 – 2024",
-    description: "Multiple internships and research stints across a few summers.",
-    image: null,
+    location: "Utah",
+    date: "Mar 2024 & Jan 2025",
+    description: "Revisited because I loved Utah",
+    image: "/travel/utah/cover.jpg",
+    slug: "utah",
   },
   {
-    location: "San Francisco & Berkeley",
+    location: "Arizona",
+    date: "April 2026",
+    description: "Sedona retreat",
+    image: "/travel/arizona/cover.jpg",
+    slug: "arizona",
+  },
+  {
+    location: "Wyoming",
+    date: "Sep 2025",
+    description: "Bear, mountains, and the milkyway",
+    image: "/travel/wyoming/cover.jpg",
+    slug: "wyoming",
+  },
+  {
+    location: "Oregon",
+    date: "Dec 2024",
+    description: "Underrated coastline",
+    image: "/travel/oregon/cover.jpg",
+    slug: "oregon",
+  },
+  {
+    location: "California",
     date: "2024 – 2025",
-    description: "Master's at UC Berkeley. Best burritos I've had.",
-    image: null,
+    description: "Meh",
+    image: "/travel/california/cover.jpg",
+    slug: "california",
+  },
+  {
+    location: "Massachusetts",
+    date: "2021-2024",
+    description: "Boston is my favorite city",
+    image: "/travel/massachusetts/cover.jpg",
+    slug: "massachusetts",
+  },
+  {
+    location: "Maine",
+    date: "Jun 2024",
+    description: "Best NP in New England",
+    image: "/travel/maine/cover.jpg",
+    slug: "maine",
   },
 ];
 
@@ -46,48 +78,14 @@ export default function TravelPage() {
               </h1>
               <p className="text-slate-400 text-lg max-w-md">
                 A data scientist who collects time zones. Drag the globe to spin
-                it — each glowing dot is somewhere I&apos;ve lived or worked.
+                it — each glowing dot is somewhere I&apos;ve lived, worked, or wandered.
               </p>
             </div>
             <Globe />
           </div>
 
           {/* Trip cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {trips.map((trip) => (
-              <div
-                key={trip.location}
-                className="border border-white/[0.08] rounded-xl overflow-hidden bg-night-card/70 backdrop-blur-sm hover:border-aurora-green/25 transition-colors"
-              >
-                <div className="h-44 bg-night/60 relative flex items-end p-4 border-b border-white/[0.06]">
-                  {trip.image && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={trip.image}
-                      alt={trip.location}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  )}
-                  {/* gradient keeps the label readable over a photo */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-night/90 to-transparent" />
-                  <div className="relative z-10">
-                    <p className="text-white font-bold text-base">{trip.location}</p>
-                    <p className="text-slate-500 text-sm">{trip.date}</p>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <p className="text-slate-400 text-sm leading-relaxed">{trip.description}</p>
-                </div>
-              </div>
-            ))}
-
-            <div className="border-2 border-dashed border-white/[0.08] rounded-xl flex flex-col items-center justify-center h-52 gap-2">
-              <div className="w-8 h-8 rounded-full bg-aurora-green/10 border border-aurora-green/30 flex items-center justify-center text-aurora-green text-lg font-bold select-none">
-                +
-              </div>
-              <p className="text-slate-600 text-sm">More coming soon</p>
-            </div>
-          </div>
+          <TravelGrid trips={trips} />
         </div>
       </main>
 
